@@ -3,169 +3,255 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voucher Sorpresa</title>
+  <title>¡Sorpresa para Ani!</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     body {
-      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      background: linear-gradient(135deg, #ffeedb 0%, #fae1dd 100%);
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 20px;
     }
 
-    .voucher {
-      background: #ffffff;
-      width: 100%;
-      max-width: 600px;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      border: 2px dashed #e0a96d;
-      position: relative;
-    }
-
-    .header {
-      background: linear-gradient(135deg, #d4a373 0%, #ccd5ae 100%);
-      color: #ffffff;
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    .header h2 {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 8px;
-    }
-
-    .header h1 {
-      font-size: 28px;
-      font-weight: 700;
-    }
-
-    .content {
-      padding: 30px;
-      text-align: center;
-    }
-
-    .recipient {
-      font-size: 14px;
-      color: #777;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    .name {
+    .main-title {
+      color: #9c6644;
       font-size: 26px;
-      color: #333;
-      font-weight: bold;
-      margin: 5px 0 20px 0;
-    }
-
-    .experience-box {
-      background: #fefae0;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 20px 0;
-      border-left: 5px solid #d4a373;
-    }
-
-    .experience-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #606c38;
-      margin-bottom: 8px;
-    }
-
-    .experience-desc {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.5;
-    }
-
-    .details {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 25px;
-      border-top: 1px solid #eee;
-      padding-top: 20px;
-    }
-
-    .detail-item {
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
       text-align: center;
     }
 
-    .detail-label {
-      font-size: 12px;
-      color: #888;
+    /* Contenedor del cupón */
+    .card-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 380px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      background: #fff;
+    }
+
+    /* Lo que está oculto y se descubre */
+    .surprise-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fffdfa;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px 24px;
+      text-align: center;
+      border: 3px dashed #ddb892;
+      border-radius: 20px;
+    }
+
+    .voucher-tag {
+      font-size: 13px;
+      color: #b08968;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-transform: uppercase;
+    }
+
+    .title-special {
+      font-size: 24px;
+      color: #7f4f24;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    .dedication-box {
+      background: #fbf5ef;
+      border-radius: 12px;
+      padding: 16px 12px;
+      margin: 12px 0;
+      border-left: 4px solid #b08968;
+    }
+
+    .dedication-box h3 {
+      color: #7f4f24;
+      font-size: 18px;
       margin-bottom: 4px;
     }
 
-    .detail-value {
+    .dedication-box p {
+      color: #584033;
       font-size: 15px;
-      font-weight: bold;
-      color: #333;
+      font-weight: 500;
     }
 
-    .footer {
-      background: #fafafa;
+    .info-date {
+      font-size: 17px;
+      font-weight: 700;
+      color: #4a3525;
+      background: #fae1dd;
+      padding: 10px 15px;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    .senders {
+      font-size: 14px;
+      color: #9c6644;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-top: 6px;
+    }
+
+    /* Capa de raspado */
+    #scratch-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      cursor: pointer;
+      touch-action: none; /* Evita hacer scroll al raspar en celular */
+    }
+
+    .hint {
+      margin-top: 15px;
+      color: #7f4f24;
+      font-size: 14px;
+      font-weight: 600;
       text-align: center;
-      padding: 15px;
-      font-size: 12px;
-      color: #aaa;
-      letter-spacing: 2px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <div class="voucher">
-    <div class="header">
-      <h2>Voucher de Regalo</h2>
-      <h1>¡Día Inolvidable!</h1>
-    </div>
+  <!-- Mensaje inicial -->
+  <h1 class="main-title">Voucher para Ana Bellene</h1>
 
-    <div class="content">
-      <div class="recipient">Especialmente para</div>
-      <div class="name">Ana Bellene</div>
+  <div class="card-wrapper" id="cardContainer">
+    <!-- Contenido que aparece detrás -->
+    <div class="surprise-card">
+      <div>
+        <div class="voucher-tag">Voucher Exclusivo</div>
+        <div class="title-special">Día Especial de Mujeres</div>
+      </div>
 
-      <div class="experience-box">
-        <div class="experience-title">Compras y Diversión con Amigas</div>
-        <div class="experience-desc">
-          Preparate para una tarde de risas, paseos, compras y momentos únicos juntas.
+      <div class="dedication-box">
+        <h3>En honor a Ani</h3>
+        <p>¡Un día para vos, solamente para vos!</p>
+      </div>
+
+      <div>
+        <div class="info-date">
+          🗓️ Lunes 14 de Septiembre • 15:00 hs
         </div>
       </div>
 
-      <div class="details">
-        <div class="detail-item">
-          <div class="detail-label">Fecha</div>
-          <div class="detail-value">Lunes 14 de Septiembre</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Hora</div>
-          <div class="detail-value">15:00 hs</div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-label">Lugar</div>
-          <div class="detail-value">Centro de Mendoza</div>
-        </div>
+      <div class="senders">
+        De parte de Lucy, Coti y Ludmi ❤️
       </div>
     </div>
 
-    <div class="footer">
-      NO REEMBOLSABLE EN EFECTIVO • SÓLO CANJEABLE POR SONRISAS
-    </div>
+    <!-- Lienzo interactivo para raspar -->
+    <canvas id="scratch-canvas"></canvas>
   </div>
 
+  <p class="hint">✨ Desliza el dedo o el mouse sobre la tarjeta para raspar ✨</p>
+
+  <script>
+    const canvas = document.getElementById('scratch-canvas');
+    const ctx = canvas.getContext('2d');
+    const container = document.getElementById('cardContainer');
+
+    let isDrawing = false;
+
+    function initCanvas() {
+      const rect = container.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+
+      // Capa de raspado plateada brillante
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, '#e0e0e0');
+      gradient.addColorStop(0.2, '#f5f5f5');
+      gradient.addColorStop(0.4, '#cccccc');
+      gradient.addColorStop(0.6, '#b0b0b0');
+      gradient.addColorStop(0.8, '#e8e8e8');
+      gradient.addColorStop(1, '#c0c0c0');
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Texto guía visible en la cubierta plateada
+      ctx.fillStyle = '#666';
+      ctx.font = 'bold 20px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('¡RASPÁ AQUÍ!', canvas.width / 2, canvas.height / 2 - 10);
+
+      ctx.font = '14px Segoe UI, sans-serif';
+      ctx.fillText('🪙 Descubrí tu sorpresa', canvas.width / 2, canvas.height / 2 + 20);
+
+      ctx.globalCompositeOperation = 'destination-out';
+    }
+
+    function getPosition(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    function scratch(e) {
+      if (!isDrawing) return;
+      const pos = getPosition(e);
+
+      ctx.beginPath();
+      // Tamaño del raspado (simula una moneda)
+      ctx.arc(pos.x, pos.y, 25, 0, Math.PI * 2, false);
+      ctx.fill();
+    }
+
+    // Eventos Mouse
+    canvas.addEventListener('mousedown', (e) => {
+      isDrawing = true;
+      scratch(e);
+    });
+    window.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mousemove', scratch);
+
+    // Eventos Touch (Celulares / Tablets)
+    canvas.addEventListener('touchstart', (e) => {
+      isDrawing = true;
+      scratch(e);
+    });
+    window.addEventListener('touchend', () => isDrawing = false);
+    canvas.addEventListener('touchmove', scratch);
+
+    window.addEventListener('load', initCanvas);
+  </script>
 </body>
 </html>
-
