@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voucher Sorpresa</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .voucher {
+      background: #ffffff;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border: 2px dashed #e0a96d;
+      position: relative;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #d4a373 0%, #ccd5ae 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .header h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .content {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .recipient {
+      font-size: 14px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .name {
+      font-size: 26px;
+      color: #333;
+      font-weight: bold;
+      margin: 5px 0 20px 0;
+    }
+
+    .experience-box {
+      background: #fefae0;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 5px solid #d4a373;
+    }
+
+    .experience-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #606c38;
+      margin-bottom: 8px;
+    }
+
+    .experience-desc {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 25px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+
+    .detail-item {
+      text-align: center;
+    }
+
+    .detail-label {
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-size: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .footer {
+      background: #fafafa;
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="voucher">
+    <div class="header">
+      <h2>Voucher de Regalo</h2>
+      <h1>¡Día Inolvidable!</h1>
+    </div>
+
+    <div class="content">
+      <div class="recipient">Especialmente para</div>
+      <div class="name">Ana Bellene</div>
+
+      <div class="experience-box">
+        <div class="experience-title">Compras y Diversión con Amigas</div>
+        <div class="experience-desc">
+          Preparate para una tarde de risas, paseos, compras y momentos únicos juntas.
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="detail-item">
+          <div class="detail-label">Fecha</div>
+          <div class="detail-value">Lunes 14 de Septiembre</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Hora</div>
+          <div class="detail-value">15:00 hs</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Lugar</div>
+          <div class="detail-value">Centro de Mendoza</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      NO REEMBOLSABLE EN EFECTIVO • SÓLO CANJEABLE POR SONRISAS
+    </div>
+  </div>
+
+</body>
+</html>
+
